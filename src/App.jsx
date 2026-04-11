@@ -299,7 +299,7 @@ export default function App() {
                 <a href="mailto:immanuellaiyawe17@gmail.com" className="btn btn-primary">
                   Email Me <Mail size={16} />
                 </a>
-                <a href="/resumepdf" className="btn btn-secondary" target="_blank" rel="noreferrer">
+                <a href="/resume.pdf" className="btn btn-secondary" target="_blank" rel="noreferrer">
                   View Resume <Briefcase size={16} />
                 </a>
               </div>
