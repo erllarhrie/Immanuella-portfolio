@@ -101,7 +101,7 @@ export default function App() {
               <a href="#work" className="btn btn-primary">
                 View My Work <ArrowRight size={16} />
               </a>
-              <a href="/Immanuella_Iyawe_Resume_Reworked_v3.pdf" className="btn btn-secondary" target="_blank" rel="noreferrer">
+              <a href="/resume.pdf" className="btn btn-secondary" target="_blank" rel="noreferrer">
                 Download Resume <FileText size={16} />
               </a>
             </div>
@@ -299,7 +299,7 @@ export default function App() {
                 <a href="mailto:immanuellaiyawe17@gmail.com" className="btn btn-primary">
                   Email Me <Mail size={16} />
                 </a>
-                <a href="/Immanuella_Iyawe_Resume_Reworked_v3.pdf" className="btn btn-secondary" target="_blank" rel="noreferrer">
+                <a href="/resumepdf" className="btn btn-secondary" target="_blank" rel="noreferrer">
                   View Resume <Briefcase size={16} />
                 </a>
               </div>
