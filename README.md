@@ -1,29 +1,25 @@
-# Immanuella Portfolio Website
+# Immanuella Iyawe — Data Analyst Portfolio
 
-This is my personal portfolio website built with React and Vite. It highlights my background, selected projects, skills, and professional positioning as a data analyst growing into analytics engineering.
+An editorial-style responsive portfolio, created with React, Vite, Framer Motion and Lucide.
 
-## About
-The site was created to support my job search, freelance work, volunteer opportunities, and personal brand. It showcases my experience in reporting, stakeholder analysis, data quality, and business-facing data work.
+## Develop locally
 
-## Tech Stack
-- React
-- Vite
-- Framer Motion
-- Lucide React
-
-## Features
-- Responsive portfolio layout
-- About section
-- Selected work/projects section
-- Services section
-- Skills section
-- Contact links
-- Resume download button
-
-## Purpose
-This website serves as a central place to present my experience, portfolio, and career direction in a clear and professional way.
-
-## Run Locally
 ```bash
 npm install
-npm run dev 
+npm run dev
+npm run build
+```
+
+## Personal assets
+
+- Add a professional headshot at `public/portrait.jpg`. A styled initials placeholder displays automatically until the image is provided.
+- The résumé buttons expect `public/resume.pdf`. Confirm that file exists before deploying; otherwise update the paths in `src/App.jsx`.
+- Email, LinkedIn and GitHub links are grouped near the top of `src/App.jsx`.
+
+## Structure
+
+The website includes a responsive navigation, editorial hero, about section, three anonymized project summaries, expertise/skills, contact links and footer. Project graphics are illustrations, not screenshots of confidential dashboards.
+
+## Deployment
+
+Deploy with Vercel using the normal Vite build (`npm run build`) and `dist` output directory. Merge the redesign pull request into `main` once you're happy with the look.
