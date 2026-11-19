@@ -12,8 +12,8 @@ npm run build
 
 ## Personal assets
 
-- Add a professional headshot at `public/portrait.jpg`. A styled initials placeholder displays automatically until the image is provided.
-- The résumé buttons expect `public/resume.pdf`. Confirm that file exists before deploying; otherwise update the paths in `src/App.jsx`.
+- A professional headshot at `public/portrait.jpg`
+- The résumé buttons expect `public/resume.pdf`.
 - Email, LinkedIn and GitHub links are grouped near the top of `src/App.jsx`.
 
 ## Structure
@@ -22,4 +22,4 @@ The website includes a responsive navigation, editorial hero, about section, thr
 
 ## Deployment
 
-Deploy with Vercel using the normal Vite build (`npm run build`) and `dist` output directory. Merge the redesign pull request into `main` once you're happy with the look.
+Deploy with Vercel using the normal Vite build (`npm run build`) and `dist` output directory
