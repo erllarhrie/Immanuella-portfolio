@@ -1,340 +1,89 @@
-import React from "react";
-import { motion } from "framer-motion";
-import {
-  Mail,
-  ExternalLink,
-  FileText,
-  ArrowRight,
-  BarChart3,
-  Database,
-  Workflow,
-  Briefcase,
-  Award,
-  Sparkles,
-} from "lucide-react";
+import React, { useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
+import { ArrowUpRight, ArrowRight, Github, Linkedin, Mail, Download, Menu, X, Database, BarChart3, Layers3, CheckCircle2, MapPin } from "lucide-react";
+import "./styles.css";
 
-const projects = [
+const CONTACT = {
+  email: "immanuellaiyawe17@gmail.com",
+  github: "https://github.com/erllarhrie",
+  linkedin: "https://www.linkedin.com/in/immanuella-iyawe-008b9b151",
+};
+const work = [
   {
-    title: "Energy Program Client Targeting Analysis",
-    description:
-      "Expanded analysis and delivery of potential client lists based on verified energy consumption thresholds for VCx, vSEM, and VCxL programs, helping stakeholders focus prospecting on the most relevant opportunities.",
-    stack: ["SQL", "Excel", "AWS QuickSight", "Salesforce"],
-    impact:
-      "Improved targeting by translating raw energy and program data into practical prospecting lists for business teams.",
+    index: "01",
+    category: "PROSPECTING & PROGRAM ANALYTICS",
+    title: "Making energy program targeting more precise",
+    challenge: "Business teams needed a clearer way to prioritize eligible accounts across energy-efficiency programs.",
+    approach: "Combined utility usage, program criteria, prospecting records and Salesforce context; applied eligibility checks and validated the final account lists.",
+    outcome: "Delivered decision-ready prospecting lists and a more consistent path from raw accounts to prioritized outreach.",
+    tags: ["Spark SQL", "Salesforce", "Excel", "Data Quality"],
+    className: "work-plum",
+    graphic: "target",
   },
   {
-    title: "Stakeholder Reporting in Excel & QuickSight",
-    description:
-      "Built and delivered recurring analyses for stakeholders using Excel and AWS QuickSight, supporting clearer visibility into program opportunities, data trends, and reporting needs.",
-    stack: ["AWS QuickSight", "Excel", "SQL"],
-    impact:
-      "Made analysis easier to consume for business teams through more structured reporting and clearer data presentation.",
+    index: "02",
+    category: "DASHBOARDS & STAKEHOLDER REPORTING",
+    title: "Turning complex reporting into a clear story",
+    challenge: "Stakeholders needed a dependable view of activity, opportunity and performance across different utilities and reporting periods.",
+    approach: "Built reporting logic and dashboards with consistent definitions, reusable datasets and clear breakdowns for business audiences.",
+    outcome: "Made key trends easier to monitor, interpret and discuss with teams.",
+    tags: ["AWS QuickSight", "Athena", "SQL", "KPIs"],
+    className: "work-blue",
+    graphic: "dashboard",
   },
   {
-    title: "Data Quality & Prospecting Workflow Support",
-    description:
-      "Performed data cleaning, table joins, validation checks, and reporting support to improve consistency across prospecting workflows and internal reporting datasets.",
-    stack: ["SQL", "Excel", "Data Quality", "Jira"],
-    impact:
-      "Increased trust in reporting outputs by reducing inconsistencies and improving the quality of underlying data used by teams.",
-  },
-];
-
-const services = [
-  {
-    title: "Dashboard & Reporting Support",
-    text: "Build or improve dashboards that help teams track KPIs, trends, and business performance with more clarity.",
-    icon: <BarChart3 size={20} />,
-  },
-  {
-    title: "SQL & Data Analysis",
-    text: "Query, clean, and analyze data to answer business questions, uncover trends, and support better decisions.",
-    icon: <Database size={20} />,
-  },
-  {
-    title: "Analytics Workflow Improvement",
-    text: "Help organize reporting logic, define cleaner metrics, and improve repeatable data workflows for teams.",
-    icon: <Workflow size={20} />,
+    index: "03",
+    category: "DATA QUALITY & WORKFLOW DESIGN",
+    title: "Building confidence in the underlying data",
+    challenge: "Inconsistent identifiers, duplicate records and different source rules made analysis more difficult to trust.",
+    approach: "Standardized business logic, reconciled joins, added validation checks and documented how metrics and classifications are produced.",
+    outcome: "Created more explainable, repeatable analytics outputs for downstream reporting.",
+    tags: ["PySpark", "SQL", "Data Modeling", "Documentation"],
+    className: "work-gold",
+    graphic: "quality",
   },
 ];
 
-const skills = [
-  "SQL",
-  "Python",
-  "AWS QuickSight",
-  "Excel",
-  "Data Cleaning",
-  "Dashboarding",
-  "Reporting Automation",
-  "Stakeholder Communication",
-  "Business Analysis",
-  "Data Quality",
+const capabilities = [
+  { icon: BarChart3, label: "Visualize", title: "Business intelligence", text: "Dashboards, KPI storytelling and stakeholder-ready insights." },
+  { icon: Database, label: "Analyze", title: "Data analysis", text: "SQL-driven exploration, reconciliation and data quality checks." },
+  { icon: Layers3, label: "Build", title: "Analytics workflows", text: "Reusable reporting logic, clean datasets and metric definitions." },
+];
+const skillGroups = [
+  { label: "QUERY & PROGRAMMING", items: ["SQL", "Spark SQL", "Python", "PySpark", "Pandas"] },
+  { label: "BUSINESS INTELLIGENCE", items: ["AWS QuickSight", "Excel", "Power BI", "KPI Reporting"] },
+  { label: "DATA & PLATFORMS", items: ["AWS Athena", "Salesforce", "Data Quality", "Data Modeling"] },
+  { label: "WAYS OF WORKING", items: ["Stakeholder Communication", "Requirements", "Documentation", "Business Analysis"] },
 ];
 
-export default function App() {
-  return (
-    <div>
-      <section className="hero section">
-        <div className="container hero-grid">
-          <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="stack"
-          >
-            <div className="badge">
-              Data Analyst | SQL, Excel, AWS QuickSight | Growing into Analytics Engineering
-            </div>
-
-            <div className="stack">
-              <h1>
-                I help teams turn messy data into clear insights, reliable reporting, and better decisions.
-              </h1>
-              <p style={{ fontSize: "1.1rem" }}>
-                I’m Immanuella Iyawe, a data analyst with 4 years of experience across reporting,
-                stakeholder analysis, data quality, and business-facing data work. I’m currently
-                deepening my skills in SQL, Python, and data modeling while building toward analytics engineering.
-              </p>
-            </div>
-
-            <div className="buttons">
-              <a href="#work" className="btn btn-primary">
-                View My Work <ArrowRight size={16} />
-              </a>
-              <a href="/resume.pdf" className="btn btn-secondary" target="_blank" rel="noreferrer">
-                Download Resume <FileText size={16} />
-              </a>
-            </div>
-
-            <div className="contact-row">
-              <a href="mailto:immanuellaiyawe17@gmail.com" className="btn btn-secondary">
-                <Mail size={16} /> immanuellaiyawe17@gmail.com
-              </a>
-              <a
-                href="https://www.linkedin.com/in/immanuella-iyawe-008b9b151"
-                target="_blank"
-                rel="noreferrer"
-                className="btn btn-secondary"
-              >
-                LinkedIn
-              </a>
-              <a
-                href="https://github.com/erllarhrie"
-                target="_blank"
-                rel="noreferrer"
-                className="btn btn-secondary"
-              >
-                GitHub
-              </a>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.98 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-          >
-            <div className="card">
-              <div className="stack">
-                <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                  <div className="soft-box" style={{ padding: 12 }}>
-                    <Sparkles size={22} />
-                  </div>
-                  <div>
-                    <p className="mini-label">Current focus</p>
-                    <h3>Positioning for higher-impact data roles</h3>
-                  </div>
-                </div>
-
-                <div className="mini-grid">
-                  <MiniStat label="Experience" value="4 years" />
-                  <MiniStat label="Core strengths" value="SQL, stakeholder reporting, data quality" />
-                  <MiniStat label="Growth path" value="Analytics engineering" />
-                  <MiniStat label="Open to" value="Freelance, volunteer, full-time" />
-                </div>
-
-                <div className="soft-box">
-                  I’m building a portfolio that reflects not just reporting ability, but stronger ownership
-                  over data workflows, metric clarity, and decision-ready datasets.
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="container about-grid">
-          <div className="stack">
-            <div className="eyebrow">About</div>
-            <h2>
-              A practical analyst with strong business context, reporting experience, and growing technical depth.
-            </h2>
-          </div>
-
-          <div className="stack">
-            <p>
-              My background is in computer science, and over the last 4 years I’ve built experience in data
-              analysis, stakeholder-facing reporting, prospecting support, and transforming raw information into
-              insights teams can actually use.
-            </p>
-            <p>
-              I’m especially interested in work that improves reporting quality, metric consistency, stakeholder
-              visibility, and the overall reliability of business data. As I continue sharpening my Python and SQL
-              foundation, I’m building toward roles that sit closer to analytics engineering and modern data workflows.
-            </p>
-            <p>
-              Outside of full-time work, I’m open to volunteer and freelance opportunities that let me contribute to
-              real projects, expand my portfolio, and solve practical data problems for teams and organizations.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section id="work" className="section section-soft">
-        <div className="container">
-          <div className="stack" style={{ marginBottom: 28 }}>
-            <div className="eyebrow">Selected Work</div>
-            <h2>Projects that show how I think and work with data.</h2>
-          </div>
-
-          <div className="projects-grid">
-            {projects.map((project, index) => (
-              <motion.div
-                key={project.title}
-                initial={{ opacity: 0, y: 18 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.45, delay: index * 0.08 }}
-              >
-                <div className="card project-card">
-                  <div className="stack">
-                    <div className="stack" style={{ gap: 12 }}>
-                      <h3>{project.title}</h3>
-                      <p>{project.description}</p>
-                    </div>
-
-                    <div className="chip-wrap">
-                      {project.stack.map((item) => (
-                        <span key={item} className="chip">
-                          {item}
-                        </span>
-                      ))}
-                    </div>
-
-                    <div className="project-impact">
-                      <strong style={{ color: "#0f172a" }}>Impact:</strong> {project.impact}
-                    </div>
-
-                    <div className="project-link">
-                      Case study coming soon <ExternalLink size={16} style={{ verticalAlign: "middle" }} />
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="container">
-          <div className="stack" style={{ maxWidth: 760, marginBottom: 28 }}>
-            <div className="eyebrow">How I Can Help</div>
-            <h2>Available for practical data support on the side.</h2>
-            <p style={{ fontSize: "1.05rem" }}>
-              I’m open to selected freelance, volunteer, and project-based opportunities where I can support
-              reporting, analysis, dashboarding, prospect targeting, and workflow improvement.
-            </p>
-          </div>
-
-          <div className="services-grid">
-            {services.map((service) => (
-              <div key={service.title} className="card service-card">
-                <div className="stack">
-                  <div className="soft-box" style={{ display: "inline-flex", width: "fit-content", padding: 12 }}>
-                    {service.icon}
-                  </div>
-                  <h3>{service.title}</h3>
-                  <p>{service.text}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section section-soft">
-        <div className="container skills-grid">
-          <div className="stack">
-            <div className="eyebrow">Skills</div>
-            <h2>Tools and strengths I use in my work.</h2>
-          </div>
-
-          <div className="chip-wrap">
-            {skills.map((skill) => (
-              <span key={skill} className="chip">
-                {skill}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="container">
-          <div className="card">
-            <div className="cta-grid">
-              <div className="stack">
-                <div className="eyebrow">Let’s Connect</div>
-                <h2>
-                  Looking for a data analyst who can support reporting, analysis, and data-driven business decisions?
-                </h2>
-                <p style={{ fontSize: "1.05rem", maxWidth: 760 }}>
-                  I’m open to full-time opportunities, freelance projects, and volunteer work where I can contribute
-                  to meaningful data problems, support stakeholders more effectively, and continue building at the next level.
-                </p>
-              </div>
-
-              <div className="buttons">
-                <a href="mailto:immanuellaiyawe17@gmail.com" className="btn btn-primary">
-                  Email Me <Mail size={16} />
-                </a>
-                <a href="/resume.pdf" className="btn btn-secondary" target="_blank" rel="noreferrer">
-                  View Resume <Briefcase size={16} />
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <footer className="footer">
-        <div className="container footer-row">
-          <p style={{ fontSize: 14 }}>
-            © 2026 Immanuella Iyawe. Built to support career growth, credibility, and stronger data opportunities.
-          </p>
-          <div className="footer-links">
-            <a href="https://www.linkedin.com/in/immanuella-iyawe-008b9b151" target="_blank" rel="noreferrer">
-              LinkedIn
-            </a>
-            <a href="https://github.com/erllarhrie" target="_blank" rel="noreferrer">
-              GitHub
-            </a>
-            <span style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
-              <Award size={14} /> Portfolio
-            </span>
-          </div>
-        </div>
-      </footer>
-    </div>
-  );
+function Reveal({ children, className = "", delay = 0 }) {
+  const reduced = useReducedMotion();
+  return <motion.div className={className} initial={reduced ? false : { opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.12 }} transition={{ duration: 0.55, delay }}>{children}</motion.div>;
 }
-
-function MiniStat({ label, value }) {
-  return (
-    <div className="mini-stat">
-      <div className="mini-label">{label}</div>
-      <div className="mini-value">{value}</div>
-    </div>
-  );
+function SectionHeading({ number, eyebrow, title, description }) {
+  return <div className="section-heading"><div className="section-kicker"><span>{number}</span>{eyebrow}</div><div className="heading-split"><h2>{title}</h2>{description && <p>{description}</p>}</div></div>;
+}
+function Graphic({ type }) {
+  if (type === "dashboard") return <div className="visual-dashboard" aria-hidden="true"><div className="visual-top"><span>PERFORMANCE OVERVIEW</span><span>↗</span></div><div className="visual-bars">{[44,68,52,83,63,91,73].map((v,i)=><span key={i} style={{height:v+"%"}} />)}</div><div className="visual-axis"><span>Q1</span><span>Q2</span><span>Q3</span><span>Q4</span></div></div>;
+  if (type === "quality") return <div className="visual-quality" aria-hidden="true"><span>DATA INTEGRITY</span><div className="visual-ring"><CheckCircle2 size={44} strokeWidth={1.4}/></div><div className="visual-lines"><i/><i/><i/></div></div>;
+  return <div className="visual-target" aria-hidden="true"><div className="target-orbit orbit-one"/><div className="target-orbit orbit-two"/><div className="target-orbit orbit-three"/><span className="target-center">INSIGHT</span><span className="target-label">SIGNAL / 01</span></div>;
+}
+function Portrait() {
+  const [error, setError] = useState(false);
+  return <div className="portrait-frame">{!error && <img src="/portrait.jpg" alt="Portrait of Immanuella Iyawe" onError={() => setError(true)} />}{error && <div className="portrait-fallback" role="img" aria-label="Portrait placeholder until a professional photograph is added"><span>II</span><p>A human perspective on data.</p></div>}<div className="portrait-mark">ANALYST <span>·</span> STORYTELLER <span>·</span> BUILDER</div></div>;
+}
+export default function App() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const close = () => setMenuOpen(false);
+  return <div className="site-shell">
+    <header className="site-header"><div className="container nav-wrap"><a className="brand" href="#home" onClick={close} aria-label="Immanuella Iyawe home">Immanuella<span className="brand-dot">.</span><span className="brand-sub">IYAWE</span></a><button className="mobile-toggle" onClick={() => setMenuOpen(v=>!v)} aria-label={menuOpen?"Close menu":"Open menu"} aria-expanded={menuOpen}>{menuOpen?<X size={23}/>:<Menu size={23}/>}</button><nav className={menuOpen?"nav-links open":"nav-links"} aria-label="Main navigation"><a href="#about" onClick={close}>About</a><a href="#work" onClick={close}>Selected work</a><a href="#expertise" onClick={close}>Expertise</a><a href="#contact" onClick={close}>Contact</a><a className="nav-cta" href="/resume.pdf" target="_blank" rel="noopener noreferrer">Résumé <ArrowUpRight size={15}/></a></nav></div></header>
+    <main>
+      <section id="home" className="hero"><div className="container hero-layout"><Reveal className="hero-copy"><div className="hero-eyebrow"><span className="eyebrow-line"/> DATA ANALYST · OTTAWA, CANADA</div><h1>Data is complex.<br/><em>Clarity</em> shouldn't be.</h1><p className="hero-lead">Hi, I'm <strong>Immanuella Iyawe.</strong> I transform raw data into reliable reporting, thoughtful insights and decisions that move businesses forward.</p><div className="hero-actions"><a className="button button-primary" href="#work">Explore my work <ArrowUpRight size={18}/></a><a className="text-link" href="#about">Get to know me <ArrowRight size={17}/></a></div><div className="hero-footnote"><span>SQL & ANALYTICS</span><span className="foot-separator"/> <span>BUSINESS INTELLIGENCE</span><span className="foot-separator"/><span>DATA QUALITY</span></div></Reveal><Reveal className="hero-visual" delay={0.1}><Portrait/><div className="floating-note"><span className="note-asterisk">✳</span><span>Where analytical thinking<br/>meets business impact.</span></div></Reveal></div><div className="hero-bottom-stripe"/></section>
+      <section id="about" className="section about-section"><div className="container"><SectionHeading number="01" eyebrow="A LITTLE ABOUT ME" title={<>A curious mind.<br/><em>A practical approach.</em></>} description="Good analysis goes beyond the numbers. It's about asking better questions, finding the pattern, and making the answer useful."/><div className="about-content"><Reveal><p className="about-large">I'm a data analyst with a computer science background and <strong>4+ years of experience</strong> working at the intersection of data, reporting and business needs.</p></Reveal><Reveal className="about-details" delay={0.08}><p>My work spans energy analytics, prospect targeting, dashboard development, stakeholder reporting and data quality. I enjoy taking something complex and making it feel effortless for the people who rely on it.</p><p>I'm particularly drawn to teams that care about good questions, dependable metrics and data that supports real decisions. I continue to grow my skills in Python, SQL, data modeling and analytics engineering.</p><a className="underlined-link" href="#contact">Let's work together <ArrowUpRight size={17}/></a></Reveal></div><div className="about-metrics"><div><strong>4+</strong><span>YEARS IN ANALYTICS</span></div><div><strong>SQL</strong><span>CORE ANALYTICAL TOOL</span></div><div><strong>BI</strong><span>REPORTING & INSIGHTS</span></div></div></div></section>
+      <section id="work" className="section work-section"><div className="container"><SectionHeading number="02" eyebrow="SELECTED WORK" title={<>Projects with <em>purpose.</em></>} description="A selection of the problems I've worked on, the methods behind my thinking and the value delivered. Client-sensitive details are intentionally kept high level."/><div className="work-grid">{work.map((item,i)=><Reveal key={item.index} className="work-card" delay={i*0.05}><div className={`work-visual ${item.className}`}><span className="work-number">{item.index} / 03</span><Graphic type={item.graphic}/></div><div className="work-body"><p className="work-category">{item.category}</p><h3>{item.title}</h3><div className="case-detail"><span>THE CHALLENGE</span><p>{item.challenge}</p></div><div className="case-detail"><span>MY APPROACH</span><p>{item.approach}</p></div><div className="case-outcome"><strong>THE VALUE</strong><p>{item.outcome}</p></div><div className="tags">{item.tags.map(tag=><span key={tag}>{tag}</span>)}</div></div></Reveal>)}</div><p className="work-disclaimer">Case studies are summarized to respect employer and client confidentiality. Visual illustrations are conceptual, not actual client dashboards.</p></div></section>
+      <section id="expertise" className="section expertise-section"><div className="container"><SectionHeading number="03" eyebrow="WHAT I BRING" title={<>Technical depth.<br/><em>Human perspective.</em></>} description="From messy inputs to measurable business clarity, I connect the technical work to the people it serves."/><div className="capability-grid">{capabilities.map((c,i)=><Reveal key={c.title} className="capability" delay={i*.06}><div className="capability-icon"><c.icon size={24} strokeWidth={1.5}/></div><span className="capability-label">0{i+1} / {c.label}</span><h3>{c.title}</h3><p>{c.text}</p></Reveal>)}</div><div className="skills-panel"><div className="skills-heading"><span className="section-kicker">TOOLKIT</span><h3>Tools, technologies & strengths</h3></div><div className="skills-grid">{skillGroups.map(g=><div key={g.label} className="skill-group"><h4>{g.label}</h4><div className="skill-tags">{g.items.map(item=><span key={item}>{item}</span>)}</div></div>)}</div></div></div></section>
+      <section id="contact" className="contact-section"><div className="container contact-layout"><div><div className="section-kicker contact-kicker"><span>04</span> LET'S CONNECT</div><h2>Let's make the<br/><em>data mean more.</em></h2><p>Looking for an analyst who can connect the dots between data, people and outcomes? I'd love to hear about it.</p><a href={`mailto:${CONTACT.email}`} className="button button-light">Start a conversation <ArrowUpRight size={19}/></a></div><div className="contact-links"><a href={`mailto:${CONTACT.email}`}><Mail size={20}/><span>Email me</span><ArrowUpRight size={18}/></a><a href={CONTACT.linkedin} target="_blank" rel="noopener noreferrer"><Linkedin size={20}/><span>LinkedIn</span><ArrowUpRight size={18}/></a><a href={CONTACT.github} target="_blank" rel="noopener noreferrer"><Github size={20}/><span>GitHub</span><ArrowUpRight size={18}/></a><a href="/resume.pdf" target="_blank" rel="noopener noreferrer"><Download size={20}/><span>View résumé</span><ArrowUpRight size={18}/></a></div></div></section>
+    </main>
+    <footer className="site-footer"><div className="container footer-layout"><span>© {new Date().getFullYear()} Immanuella Iyawe</span><span>Curiosity · Clarity · Impact</span><a href="#home">Back to top ↑</a></div></footer>
+  </div>;
 }
